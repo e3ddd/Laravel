@@ -5,6 +5,7 @@ use App\Http\Controllers\AddProductImageController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserProductsController;
+use App\Http\Controllers\UserProductsListController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 
@@ -37,5 +38,6 @@ Route::resource('add_product', AddProductController::class);
 Route::resource('add_image', AddProductImageController::class);
 Route::resource('users', UserController::class);
 Route::resource('users.products', UserProductsController::class)->shallow();
+Route::resource('users_products', UserProductsListController::class);
 
 

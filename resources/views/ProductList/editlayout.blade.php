@@ -11,6 +11,6 @@
 </head>
 <body>
 @include('ProductList.edititem')
-<div class="col p-3 mt-4"><b>@include('ProductList.editimg')</b></div>
+<div class="col p-3 mt-4"><b>@include('ProductList.deleteimg')</b></div>
 </body>
 </html>

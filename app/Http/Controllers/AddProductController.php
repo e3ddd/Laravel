@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddProductRequest;
 use App\Models\Products;
+use App\Models\Users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -24,14 +26,14 @@ class AddProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request, Products $products)
+    public function create(AddProductRequest $request, Products $products, Users $users)
     {
-        $products::create([
-            'email' => $request->email,
-            'name' => $request->name,
-            'price' => $request->price,
-            'description' => $request->description,
-        ]);
+            $products::create([
+                'email' => $request->email,
+                'name' => $request->name,
+                'price' => $request->price,
+                'description' => $request->description,
+            ]);
     }
 
     /**

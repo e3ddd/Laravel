@@ -1,6 +1,7 @@
 @foreach($product as $item)
-<form action="/products/{{$item['id']}}/edit">
+<form action="/products/{{$item['id']}}/edit" method="POST">
     @csrf
+    @method('PUT')
     <div  class="col">
         <input type="text" name="name" value="{{$item['name']}}">
     </div>

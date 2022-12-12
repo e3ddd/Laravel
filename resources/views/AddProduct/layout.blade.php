@@ -20,6 +20,7 @@
     <div class="row text-center bg-white shadow-sm">
         <div class="col border rounded p-4">
             @include('AddProduct.item')
+
             @include('AddProduct.item2')
         </div>
     </div>

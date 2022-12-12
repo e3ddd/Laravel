@@ -12,7 +12,7 @@
     <div class="row text-center bg-white shadow-sm">
         <div class="col border rounded p-4">
             <form action="/reg_form" method="GET">
-                <input class="btn btn-primary" type="submit" name="action" value="Registration and Search">
+                <input class="btn btn-primary" type="submit" name="action" value="Registration Form">
             </form>
         </div>
         <div class="col border rounded p-4">
