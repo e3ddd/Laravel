@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Views extends Model
 {
     use HasFactory;
+    protected $table = 'view_product';
+    protected $fillable = [
+        'views',
+        'product_id',
+        'hour',
+        'minute',
+    ];
 }

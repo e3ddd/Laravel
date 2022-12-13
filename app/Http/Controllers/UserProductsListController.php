@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ProductImages;
 use App\Models\Products;
+use App\Models\Views;
 use Illuminate\Http\Request;
 
 class   UserProductsListController extends Controller
@@ -13,11 +14,17 @@ class   UserProductsListController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index(ProductImages $images, Products $products)
+    public function index(ProductImages $images, Products $products, Views $views)
     {
+        $date = date("i");
+
+        $views = $views::all();
+
+
         return view('UsersProducts.layout', [
             'products' => $products->paginate(9),
-                'images' => $images->all(),
+            'images' => $images->all(),
+            'views' => $views,
         ]);
     }
 
@@ -48,8 +55,39 @@ class   UserProductsListController extends Controller
      * @param  int  $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function show(Request $request, Products $products, ProductImages $images)
+    public function show(Request $request, Products $products, ProductImages $images, Views $views)
     {
+        $currentMin = date('i');
+        if($views->where('product_id', $request->prodId)->doesntExist()) {
+            $views::create([
+                'product_id' => $request->prodId,
+                'views' => 1,
+                'hour' => date('H'),
+                'minute' => date('i'),
+            ]);
+        }else{
+            $viewProductDate = $views::where('product_id', $request->prodId)->where('minute', $currentMin)->get('minute');
+            if(!empty($viewProductDate->toArray())){
+                if($currentMin == $viewProductDate->toArray()[0]['minute']){
+                    $viewCount = $views::where('product_id', $request->prodId)->where('minute', $currentMin)->get('views');
+                    $count = $viewCount->toArray()[0]['views'];
+                    $count++;
+                    $views::where('product_id', $request->prodId)->where('minute', $currentMin)->update([
+                        'views' => $count
+                    ]);
+                }
+            }else{
+                $views::create([
+                    'product_id' => $request->prodId,
+                    'views' => 1,
+                    'hour' => date('H'),
+                    'minute' => date('i'),
+                ]);
+            }
+        }
+
+
+
         $product = $products::all()->where('id', $request->prodId)->toArray();
         $image = $images::all()->where('product_id', $request->prodId);
         return view('UsersProducts.viewlayout',[

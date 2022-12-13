@@ -8,9 +8,10 @@
 <div class="col-4 pt-2">
     <p>{{$product['description']}}</p>
 </div>
-<form class="d-flex justify-content-center" action="" method="">
+<form class="d-flex justify-content-center" action="/user_products/{{$product['id'] . "_" . $product['name']}}/view_statistic">
+    @csrf
     <input class="btn btn-primary" type="submit" name="view" value="Statistic">
-    <input type="hidden" name="prodId" value="##ID##">
+    <input type="hidden" name="prodId" value="{{$product['id']}}">
 </form>
     @break
     @endforeach()

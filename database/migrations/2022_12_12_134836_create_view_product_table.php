@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('view_product', function (Blueprint $table) {
             $table->id();
+            $table->integer('product_id');
+            $table->integer('views');
+            $table->string('hour');
+            $table->string('minute');
             $table->timestamps();
         });
     }
