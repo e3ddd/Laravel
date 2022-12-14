@@ -12,6 +12,7 @@ class Views extends Model
     protected $fillable = [
         'views',
         'product_id',
+        'date',
         'hour',
         'minute',
     ];

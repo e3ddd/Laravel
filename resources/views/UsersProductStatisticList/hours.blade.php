@@ -1,1 +1,3 @@
-<div class="col">##HOUR##</div>
+<div class="col">
+    {{$i}}
+</div>

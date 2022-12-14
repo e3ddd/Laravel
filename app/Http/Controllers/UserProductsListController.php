@@ -62,7 +62,8 @@ class   UserProductsListController extends Controller
             $views::create([
                 'product_id' => $request->prodId,
                 'views' => 1,
-                'hour' => date('H'),
+                'date' => date('Y-m-d'),
+                'hour' => date('G'),
                 'minute' => date('i'),
             ]);
         }else{
@@ -80,7 +81,8 @@ class   UserProductsListController extends Controller
                 $views::create([
                     'product_id' => $request->prodId,
                     'views' => 1,
-                    'hour' => date('H'),
+                    'date' => date('Y-m-d'),
+                    'hour' => date('G'),
                     'minute' => date('i'),
                 ]);
             }

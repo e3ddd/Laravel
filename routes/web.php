@@ -3,6 +3,7 @@
 use App\Http\Controllers\AddProductController;
 use App\Http\Controllers\AddProductImageController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SearchUserController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserProductsController;
 use App\Http\Controllers\UserProductsListController;
@@ -34,6 +35,7 @@ Route::name('index.')->group(function (){
     })->name('users.products');
 });
 Route::get('/reg_form/registration', [RegisterController::class, "store"])->name('register');
+Route::get('/users/search_email', [SearchUserController::class, 'search']);
 
 Route::resource('add_product', AddProductController::class);
 Route::resource('add_image', AddProductImageController::class);

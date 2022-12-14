@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('product_id');
             $table->integer('views');
+            $table->string('date');
             $table->string('hour');
             $table->string('minute');
             $table->timestamps();

@@ -1,4 +1,7 @@
 <div class="row">
-    <div class="col-1  border-top border-dark">##DATE##</div>
-    ##NUMBERS##
+    {{$date}}
+    <div class="col"></div>
+    @foreach($view as $item)
+    <div class="col border-top border-dark">{{$item}}</div>
+    @endforeach
 </div>
